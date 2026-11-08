@@ -1,0 +1,103 @@
+/* Fun Gun - website styles (shared by every page) */
+:root {
+  --bg: #0a0e1f;
+  --panel: #131a33;
+  --panel2: #1a2347;
+  --text: #e9edff;
+  --muted: #9aa6cf;
+  --teal: #49c2ff;
+  --pink: #ff7a1a;
+  --gold: #ffc42a;
+  --line: #28335f;
+  --radius: 16px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+a { color: var(--teal); }
+img { max-width: 100%; display: block; }
+.wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+
+/* ---------- top bar ---------- */
+.bar { position: sticky; top: 0; z-index: 10; background: rgba(10, 14, 31, .88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 900; letter-spacing: .02em; }
+.brand img { width: 38px; height: 38px; border-radius: 10px; }
+nav { display: flex; gap: 6px; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: 10px; font-weight: 600; font-size: .95rem; }
+nav a:hover, nav a[aria-current="page"] { color: var(--text); background: var(--panel2); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; min-height: min(78vh, 680px); display: grid; place-items: center; text-align: center; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero::before { content: ""; position: absolute; inset: 0; background: url("cover.jpg") center / cover; filter: saturate(1.1); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 14, 31, .25) 0%, rgba(10, 14, 31, .55) 55%, var(--bg) 100%); }
+.hero .inner { position: relative; z-index: 1; padding: 70px 0 90px; }
+.hero h1 { margin: 0 auto 8px; width: min(760px, 92%); }
+.hero h1 img { margin-inline: auto; filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .6)); }
+.hero h1 span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.tagline { font-size: clamp(1.1rem, 2.6vw, 1.5rem); font-weight: 700; margin: 8px auto 26px; max-width: 760px; text-shadow: 0 2px 12px rgba(0, 0, 0, .8); }
+.cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 26px; border-radius: 14px; font-weight: 800; text-decoration: none; border: 2px solid transparent; font-size: 1.05rem; }
+.btn.primary { background: linear-gradient(135deg, var(--teal), #20b6ff); color: #04141a; }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.ghost { border-color: var(--teal); color: var(--teal); background: rgba(10, 14, 31, .55); }
+.btn.soon { background: var(--panel2); color: var(--muted); border-color: var(--line); cursor: default; }
+.note { color: #d3dcff; font-size: .95rem; margin-top: 14px; text-shadow: 0 1px 8px rgba(0, 0, 0, .8); }
+
+/* ---------- sections ---------- */
+section { padding: 64px 0; }
+section.alt { background: var(--panel); border-block: 1px solid var(--line); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0 0 8px; line-height: 1.2; }
+h2 em { font-style: normal; color: var(--teal); }
+.lead { color: var(--muted); max-width: 700px; margin: 0 0 32px; }
+
+.cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.card { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+section.alt .card { background: var(--bg); }
+.card h3 { margin: 0 0 6px; font-size: 1.2rem; }
+.card h3 .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; background: var(--teal); }
+.card:nth-child(3n+2) h3 .dot { background: var(--pink); }
+.card:nth-child(3n) h3 .dot { background: var(--gold); }
+.card p { margin: 0; color: var(--muted); }
+
+.guns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.guns span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: .9rem; color: var(--text); }
+.guns span.scifi { border-color: var(--teal); color: var(--teal); }
+
+.shots { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.shots a { display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: #000; }
+.shots img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .25s; }
+.shots a:hover img { transform: scale(1.04); }
+.shots figcaption { padding: 10px 14px; font-size: .95rem; color: var(--muted); background: var(--panel2); }
+.shots figure { margin: 0; }
+
+.two { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 800px) { .two { grid-template-columns: 1.1fr 1fr; } }
+ul.tick { list-style: none; padding: 0; margin: 0; }
+ul.tick li { padding: 8px 0 8px 32px; position: relative; }
+ul.tick li::before { content: "\2713"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: #04141a; font-weight: 900; text-align: center; line-height: 22px; font-size: .9rem; }
+
+/* ---------- text pages ---------- */
+.page { padding: 48px 0 72px; }
+.page h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 6px; }
+.page h2 { margin-top: 38px; font-size: 1.4rem; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.page .meta { color: var(--muted); margin-bottom: 26px; }
+.page table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .96rem; }
+.page th, .page td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.page th { background: var(--panel2); }
+.page details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 10px 0; }
+.page summary { cursor: pointer; font-weight: 700; }
+.page details p { margin: 10px 0 0; color: var(--muted); }
+.fill { background: #4a3d00; color: #ffe27a; padding: 0 5px; border-radius: 4px; }
+
+/* ---------- footer ---------- */
+footer { border-top: 1px solid var(--line); padding: 34px 0 44px; color: var(--muted); font-size: .95rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 30px; justify-content: space-between; }
+footer a { color: var(--muted); }
+footer a:hover { color: var(--teal); }
+.fine { width: 100%; font-size: .85rem; opacity: .8; }
